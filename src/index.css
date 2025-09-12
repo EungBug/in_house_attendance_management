@@ -1,2 +1,40 @@
 @import "tailwindcss";
-@plugin "daisyui";
+
+@font-face {
+  font-family: "RiaSans";
+  font-weight: 400;
+  src: url("./assets/fonts/RiaSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "RiaSans";
+  font-weight: 700;
+  src: url("./assets/fonts/RiaSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "RiaSans";
+  font-weight: 900;
+  src: url("./assets/fonts/RiaSans-ExtraBold.ttf") format("truetype");
+}
+
+@theme {
+  --font-ria: "RiaSans", sans-serif;
+}
+
+@plugin "daisyui" {
+  themes: "light";
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-primary: "#4E8AFF";
+  --color-accent: "#023FB5";
+  --color-secondary: "#E7FB70";
+}
+
+body {
+  font-family: "RiaSans";
+}
