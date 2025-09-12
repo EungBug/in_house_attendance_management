@@ -38,3 +38,10 @@
 body {
   font-family: "RiaSans";
 }
+
+button:focus,
+select:focus,
+input:focus,
+label:focus-within {
+  @apply outline-0 outline-none;
+}
