@@ -1,3 +1,6 @@
+import { useLoginMutation } from '@/entities/auth/model/useLoginMutation';
+import { useNavigate, useSearch } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
 interface LoginFormValues {
@@ -6,6 +9,8 @@ interface LoginFormValues {
 }
 
 export const useLogin = () => {
+  const navigate = useNavigate();
+  const redirectTo = useSearch({ from: '/login' });
   const {
     handleSubmit,
     register,
@@ -16,9 +21,23 @@ export const useLogin = () => {
     defaultValues: { email: '', password: '' },
   });
 
+  const { mutate, isSuccess, error } = useLoginMutation();
+
   const login: SubmitHandler<LoginFormValues> = async (data) => {
-    console.log('login payload:', data);
+    mutate(data);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(redirectTo ?? { to: '/', replace: true });
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (error) {
+      setError('password', { message: error.message });
+    }
+  }, [error]);
 
   return {
     register,
