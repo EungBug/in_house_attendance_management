@@ -1,14 +1,13 @@
 import { useAuthStore } from '@/entities/auth/model/useAuthStore';
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
+import { ToastContainer } from 'react-toastify';
 
 function RootLayout() {
   return (
     <div className='flex h-screen'>
       <main className='flex-1'>
-        <header className='flex h-14 items-center border-b px-4'>/* Header */</header>
-        <div className='p-4'>
-          <Outlet />
-        </div>
+        <Outlet />
+        <ToastContainer position='top-center' autoClose={3000} draggable />
       </main>
     </div>
   );
