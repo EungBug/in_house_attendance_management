@@ -1,28 +1,23 @@
 import clsx from 'clsx';
-import React, { type HTMLInputTypeAttribute } from 'react';
+import React, { type InputHTMLAttributes } from 'react';
 
-interface Props {
-  type?: HTMLInputTypeAttribute;
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  type?: string;
   value?: string;
-  onChange?: (value: string) => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   error?: string;
 }
 
-const Input = ({ type = 'text', value, onChange, placeholder, error }: Props) => {
+const Input = ({ type = 'text', value, onChange, placeholder, error, ...rest }: Props) => {
   return (
     <div className='w-full'>
-      <label className='input h-[44px] rounded-[8px] border-none bg-white py-2 text-sm caret-primary shadow-none ring-0 placeholder:text-[#909090]'>
-        <input
-          type={type}
-          value={value}
-          onChange={(event) => onChange?.(event.currentTarget.value)}
-          placeholder={placeholder}
-        />
+      <label className='input h-[44px] w-full rounded-[8px] border-none bg-white py-2 text-sm caret-primary shadow-none ring-0 placeholder:text-[#909090]'>
+        <input {...rest} type={type} value={value} onChange={onChange} placeholder={placeholder} />
       </label>
       <div
         className={clsx(
-          'visible mt-1 self-end text-right text-xs text-red-300',
+          'visible mt-1 self-end text-right text-xs text-red-500',
           error ? 'visible' : 'invisible',
         )}
       >
