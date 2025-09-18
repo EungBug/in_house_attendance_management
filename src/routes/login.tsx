@@ -1,11 +1,15 @@
 import { useAuthStore } from '@/entities/auth/model/useAuthStore';
-import { createFileRoute, redirect } from '@tanstack/react-router';
-
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
 import logo from '@/assets/logo.png';
 import logoKr from '@/assets/logo_kr.png';
 import LoginForm from '@/features/login/ui/LoginForm';
+import RegisterButton from '@/features/login/ui/RegisterButton';
 
 const RouteComponent = () => {
+  const navigate = useNavigate();
+
+  const navigateToRegister = () => navigate({ to: '/register' });
+
   return (
     <div className='flex h-screen flex-col items-center bg-primary'>
       <div className='my-[60px] flex flex-col items-center gap-2'>
@@ -17,6 +21,10 @@ const RouteComponent = () => {
 
       {/* FORM */}
       <LoginForm />
+
+      <div className='mt-4 w-full px-[30px] sm:max-w-sm'>
+        <RegisterButton onClick={navigateToRegister} />
+      </div>
     </div>
   );
 };

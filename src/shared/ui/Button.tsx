@@ -12,7 +12,7 @@ const Button = ({ type = 'button', text, onClick, className }: Props) => {
     <button
       type={type}
       className={clsx(
-        'btn flex h-12 items-center justify-center rounded-xl',
+        'btn flex h-12 items-center justify-center rounded-xl shadow-none',
         'bg-secondary hover:bg-[#A8D823] active:bg-[#A8D823] disabled:bg-[#E0E0E0]',
         'text-lg font-bold text-accent disabled:text-[#909090]',
         className,
