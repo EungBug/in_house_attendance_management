@@ -12,7 +12,7 @@ const AttendanceButtons = ({ clockInTime, clockOutTime }: Props) => {
   const onClickClockOut = useClockOutMutation();
 
   return (
-    <div className='flex w-full gap-3'>
+    <div className='flex h-full w-full gap-3'>
       <button
         className={clsx(
           'flex flex-1 items-center justify-center rounded-xl bg-primary py-5 text-3xl font-bold text-white',

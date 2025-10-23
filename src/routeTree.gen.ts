@@ -13,6 +13,7 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as AuthIndexRouteImport } from './routes/_auth.index'
+import { Route as AuthAnnualLeaveRouteImport } from './routes/_auth.annual-leave'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -33,15 +34,22 @@ const AuthIndexRoute = AuthIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthAnnualLeaveRoute = AuthAnnualLeaveRouteImport.update({
+  id: '/annual-leave',
+  path: '/annual-leave',
+  getParentRoute: () => AuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/annual-leave': typeof AuthAnnualLeaveRoute
   '/': typeof AuthIndexRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/annual-leave': typeof AuthAnnualLeaveRoute
   '/': typeof AuthIndexRoute
 }
 export interface FileRoutesById {
@@ -49,14 +57,21 @@ export interface FileRoutesById {
   '/_auth': typeof AuthRouteWithChildren
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/_auth/annual-leave': typeof AuthAnnualLeaveRoute
   '/_auth/': typeof AuthIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/register' | '/'
+  fullPaths: '/login' | '/register' | '/annual-leave' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/register' | '/'
-  id: '__root__' | '/_auth' | '/login' | '/register' | '/_auth/'
+  to: '/login' | '/register' | '/annual-leave' | '/'
+  id:
+    | '__root__'
+    | '/_auth'
+    | '/login'
+    | '/register'
+    | '/_auth/annual-leave'
+    | '/_auth/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,14 +110,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthIndexRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/annual-leave': {
+      id: '/_auth/annual-leave'
+      path: '/annual-leave'
+      fullPath: '/annual-leave'
+      preLoaderRoute: typeof AuthAnnualLeaveRouteImport
+      parentRoute: typeof AuthRoute
+    }
   }
 }
 
 interface AuthRouteChildren {
+  AuthAnnualLeaveRoute: typeof AuthAnnualLeaveRoute
   AuthIndexRoute: typeof AuthIndexRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
+  AuthAnnualLeaveRoute: AuthAnnualLeaveRoute,
   AuthIndexRoute: AuthIndexRoute,
 }
 
