@@ -1,4 +1,5 @@
 import Button from '@/shared/ui/Button';
+import DatePickerInput from '@/shared/ui/DatePickerInput';
 import Input from '@/shared/ui/Input';
 import PwdInput from '@/shared/ui/PwdInput';
 import { useRegister } from '../model/useRegister';
@@ -45,6 +46,14 @@ const RegisterForm = () => {
           })}
           placeholder='비밀번호를 한번 더 입력해주세요'
           error={errors?.passwordConfirm?.message?.toString()}
+        />
+
+        <DatePickerInput
+          {...register('hiredAt', {
+            required: '입사일을 입력해주세요',
+          })}
+          placeholder='입사일을 입력해주세요'
+          error={errors?.hiredAt?.message?.toString()}
         />
       </div>
 

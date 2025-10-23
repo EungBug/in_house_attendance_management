@@ -8,6 +8,7 @@ interface RegisterFormValues {
   password: string;
   passwordConfirm: string;
   name: string;
+  hiredAt: string;
 }
 
 export const useRegister = () => {
@@ -22,7 +23,7 @@ export const useRegister = () => {
     formState: { errors },
   } = useForm<RegisterFormValues>({
     mode: 'onSubmit',
-    defaultValues: { email: '', password: '', passwordConfirm: '', name: '' },
+    defaultValues: { email: '', password: '', passwordConfirm: '', name: '', hiredAt: undefined },
   });
 
   const registerByEmail: SubmitHandler<RegisterFormValues> = async (data) => {
@@ -34,6 +35,7 @@ export const useRegister = () => {
       email: data.email,
       name: data.name,
       password: data.password,
+      hiredAt: data.hiredAt,
     });
   };
 
