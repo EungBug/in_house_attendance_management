@@ -1,42 +1,42 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
-  font-family: "RiaSans";
+  font-family: 'RiaSans';
   font-weight: 400;
-  src: url("./assets/fonts/RiaSans-Regular.ttf") format("truetype");
+  src: url('./assets/fonts/RiaSans-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "RiaSans";
+  font-family: 'RiaSans';
   font-weight: 700;
-  src: url("./assets/fonts/RiaSans-Bold.ttf") format("truetype");
+  src: url('./assets/fonts/RiaSans-Bold.ttf') format('truetype');
 }
 @font-face {
-  font-family: "RiaSans";
+  font-family: 'RiaSans';
   font-weight: 900;
-  src: url("./assets/fonts/RiaSans-ExtraBold.ttf") format("truetype");
+  src: url('./assets/fonts/RiaSans-ExtraBold.ttf') format('truetype');
 }
 
 @theme {
-  --font-ria: "RiaSans", sans-serif;
+  --font-ria: 'RiaSans', sans-serif;
 }
 
 @plugin "daisyui" {
-  themes: "light";
+  themes: 'light';
 }
 
 @plugin "daisyui/theme" {
-  name: "light";
+  name: 'light';
   default: true;
   prefersdark: false;
   color-scheme: light;
 
-  --color-primary: "#4E8AFF";
-  --color-accent: "#023FB5";
-  --color-secondary: "#E7FB70";
+  --color-primary: '#4E8AFF';
+  --color-accent: '#023FB5';
+  --color-secondary: '#E7FB70';
 }
 
 body {
-  font-family: "RiaSans";
+  font-family: 'RiaSans';
 }
 
 button:focus,
@@ -44,4 +44,40 @@ select:focus,
 input:focus,
 label:focus-within {
   @apply outline-0 outline-none;
+}
+
+.calendar .react-calendar {
+  @apply w-full border-0 bg-white text-black;
+}
+
+.calendar .react-calendar__navigation button {
+  @apply h-10 bg-white text-lg font-medium;
+}
+.calendar .react-calendar__navigation button:enabled:hover,
+.calendar .react-calendar__navigation button:enabled:focus {
+  @apply bg-gray-100;
+}
+.calendar .react-calendar__navigation button[disabled] {
+  @apply bg-white text-gray-300;
+}
+.calendar .react-calendar__month-view__days__day--weekend {
+  @apply text-red-500;
+}
+.calendar .react-calendar__tile {
+  @apply aspect-square p-0.5 text-base;
+}
+.calendar .react-calendar__tile:enabled:hover,
+.calendar.react-calendar__tile:enabled:focus {
+  @apply bg-gray-100;
+}
+.calendar .react-calendar__tile--now {
+  @apply border-primary bg-white font-medium text-accent;
+}
+.calendar .react-calendar__tile--active {
+  @apply border-1 border-primary bg-white font-medium text-primary;
+}
+
+/* 요일 */
+.calendar .react-calendar__month-view__weekdays__weekday {
+  @apply text-gray-400;
 }

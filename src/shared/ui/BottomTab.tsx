@@ -26,7 +26,7 @@ const BottomTab = () => {
   );
 
   return (
-    <div className='flex h-15 w-full border-t border-t-gray-300'>
+    <div className='fixed bottom-0 flex h-15 w-full border-t border-t-gray-300 bg-white'>
       <button className='h-full w-full flex-1' onClick={() => handleNavigate(ROUTE.HOME)}>
         <div className='flex flex-col items-center justify-center gap-1'>
           <TbHome className={clsx('size-6', pathname === ROUTE.HOME && 'text-primary')} />

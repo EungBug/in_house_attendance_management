@@ -5,7 +5,7 @@ import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 function RootLayout() {
   return (
     <div className='flex h-screen flex-col'>
-      <main className='flex-1'>
+      <main className='mb-15 flex-1 overflow-y-auto'>
         <Outlet />
       </main>
       <BottomTab />

@@ -1,3 +1,4 @@
+import AnnualLeaveWidget from '@/widgets/annualLeave/ui/AnnualLeaveWidget';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/_auth/annual-leave')({
@@ -5,5 +6,9 @@ export const Route = createFileRoute('/_auth/annual-leave')({
 });
 
 function RouteComponent() {
-  return <div>Hello "/_auth/annual-leave"!</div>;
+  return (
+    <>
+      <AnnualLeaveWidget />
+    </>
+  );
 }
