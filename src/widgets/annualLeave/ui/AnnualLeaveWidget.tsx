@@ -7,8 +7,16 @@ import AnnualLeaveList from './AnnualLeaveList';
 import CreateAnnualLeaveModal from './CreateAnnualLeaveModal';
 
 const AnnualLeaveWidget = () => {
-  const { year, summary, selectedDate, setSelectedDate, onChangeMonth, section, listBySelected } =
-    useAnnualLeaveModel();
+  const {
+    year,
+    summary,
+    selectedDate,
+    setSelectedDate,
+    onChangeMonth,
+    section,
+    listBySelected,
+    onClickDelete,
+  } = useAnnualLeaveModel();
 
   const [isOpenModal, { open, close }] = useDisclosure();
 
@@ -31,7 +39,7 @@ const AnnualLeaveWidget = () => {
         section={section}
       />
 
-      <AnnualLeaveList date={selectedDate} list={listBySelected} />
+      <AnnualLeaveList date={selectedDate} list={listBySelected} onClickDelete={onClickDelete} />
 
       {isOpenModal && <CreateAnnualLeaveModal isOpen={isOpenModal} close={close} />}
     </div>

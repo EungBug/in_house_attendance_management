@@ -1,5 +1,6 @@
 import { useAuthStore } from '@/entities/auth/model/useAuthStore';
 import BottomTab from '@/shared/ui/BottomTab';
+import CommonModal from '@/shared/ui/CommonModal';
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 
 function RootLayout() {
@@ -9,6 +10,8 @@ function RootLayout() {
         <Outlet />
       </main>
       <BottomTab />
+
+      <CommonModal />
     </div>
   );
 }

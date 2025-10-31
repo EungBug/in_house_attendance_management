@@ -19,3 +19,9 @@ export const createAnnualLeave = async (data: AnnualLeaveCreateReq): Promise<boo
   const res = await apiClient.post('/annual-leave', data);
   return res.data;
 };
+
+// 휴가 삭제
+export const deleteAnnualLeaveById = async (id: number): Promise<boolean> => {
+  const res = await apiClient.delete(`/annual-leave/${id}`);
+  return res.data;
+};

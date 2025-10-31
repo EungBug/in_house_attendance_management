@@ -10,6 +10,7 @@ export const useLoginMutation = () => {
       login({ email, password }),
     onSuccess: (res) => {
       saveLoginInfo({
+        userId: res.id,
         userName: res.name,
         accessToken: res.accessToken,
       });
