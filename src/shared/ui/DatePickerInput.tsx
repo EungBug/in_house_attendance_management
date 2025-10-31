@@ -124,14 +124,14 @@ const DatePickerInput = ({
         ref={popoverRef}
         popover='manual'
         role='dialog'
-        className='rounded-lg border bg-white p-2 shadow-lg'
+        className='mt-2 !min-w-fit rounded-lg border bg-white p-2 shadow-lg'
         // ESC로 닫힘 처리 (UA가 기본 처리하지만 상태 동기화)
         onKeyDown={(e) => {
           if (e.key === 'Escape') setOpen(false);
         }}
       >
         <DayPicker
-          className='react-day-picker'
+          className='react-day-picker border-none'
           mode='single'
           selected={date}
           onSelect={(d) => {

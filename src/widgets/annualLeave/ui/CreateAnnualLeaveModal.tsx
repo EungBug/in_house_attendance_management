@@ -9,7 +9,7 @@ interface CreateAnnualLeaveModalProps {
 }
 
 const CreateAnnualLeaveModal = ({ isOpen, close }: CreateAnnualLeaveModalProps) => {
-  const { register, errors, onSubmit } = useCreateAnnualLeave();
+  const { register, errors, onSubmit, isButtonDisabled } = useCreateAnnualLeave(close);
 
   return (
     <Modal
@@ -64,15 +64,15 @@ const CreateAnnualLeaveModal = ({ isOpen, close }: CreateAnnualLeaveModalProps) 
             </>
 
             <>
-              <label className='mt-4 mb-1 inline-block font-sans font-medium'>휴가 타입</label>
+              <label className='mt-4 mb-1 inline-block font-sans font-medium'>휴가 유형</label>
               <div className='flex gap-4 font-sans'>
                 <label className='flex items-center gap-2 font-medium'>
                   <input
                     type='radio'
-                    name='leaveType'
                     value='ALL_DAY'
                     defaultChecked
                     className='radio border-primary radio-sm checked:text-primary'
+                    {...register('annualLeaveType', { required: '휴가 유형을 선택하세요.' })}
                   />
                   연차
                 </label>
@@ -80,9 +80,9 @@ const CreateAnnualLeaveModal = ({ isOpen, close }: CreateAnnualLeaveModalProps) 
                 <label className='flex items-center gap-2 font-medium'>
                   <input
                     type='radio'
-                    name='leaveType'
                     value='HALF_AM'
                     className='radio border-primary radio-sm checked:text-primary'
+                    {...register('annualLeaveType', { required: '휴가 유형을 선택하세요.' })}
                   />
                   오전 반차
                 </label>
@@ -90,9 +90,9 @@ const CreateAnnualLeaveModal = ({ isOpen, close }: CreateAnnualLeaveModalProps) 
                 <label className='flex items-center gap-2 font-medium'>
                   <input
                     type='radio'
-                    name='leaveType'
                     value='HALF_PM'
                     className='radio border-primary radio-sm checked:text-primary'
+                    {...register('annualLeaveType', { required: '휴가 유형을 선택하세요.' })}
                   />
                   오후 반차
                 </label>
@@ -100,7 +100,9 @@ const CreateAnnualLeaveModal = ({ isOpen, close }: CreateAnnualLeaveModalProps) 
             </>
           </div>
 
-          <button className='btn w-full btn-primary'>등록하기</button>
+          <button className='btn w-full btn-primary' disabled={isButtonDisabled}>
+            등록하기
+          </button>
         </form>
       </div>
     </Modal>
